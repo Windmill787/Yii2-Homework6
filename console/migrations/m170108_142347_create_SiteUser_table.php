@@ -15,6 +15,9 @@ class m170108_142347_create_SiteUser_table extends Migration
         $this->createTable('SiteUser', [
             'id' => $this->primaryKey(),
             'username' => $this->string()->notNull(),
+            'first_name' => $this->string(30)->notNull(),
+            'last_name' => $this->string(30)->notNull(),
+            'age' => $this->integer(3)->notNull(),
             'email' => $this->string()->notNull(),
             'password_hash' => $this->string()->notNull(),
             'status' => $this->smallInteger()->notNull(),

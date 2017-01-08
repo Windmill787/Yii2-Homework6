@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\RegistrationForm;
 use common\models\SiteUser;
 use Yii;
 use yii\base\InvalidParamException;
@@ -213,27 +214,27 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionReg()
+    public function actionRegistration()
     {
-        $model = new RegForm();
+        $model = new RegistrationForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()):
-            if ($user = $model->reg()):
+            if ($user = $model->registration()):
                 if ($user->status === SiteUser::STATUS_ACTIVE):
                     if (Yii::$app->getUser()->login($user)):
                         return $this->goHome();
                     endif;
                 endif;
             else:
-                Yii::$app->session->setFlash('error', 'Возникла ошибка при регистрации.');
-                Yii::error('Ошибка при регистрации');
+                Yii::$app->session->setFlash('error', Yii::t('app', 'There is error while registration'));
+                Yii::error(Yii::t('app', 'Error while registration'));
                 return $this->refresh();
             endif;
         endif;
 
 
         return $this->render(
-            'reg',
+            'registration',
             [
                 'model' => $model
             ]

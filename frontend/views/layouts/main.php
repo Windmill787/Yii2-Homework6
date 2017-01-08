@@ -69,7 +69,7 @@ GreyAsset::register($this);
                 $menuItems[] =
                 ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
                 $menuItems[] =
-                ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/reg']];
+                ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/registration']];
             }
             else {
                 $menuItems[] =

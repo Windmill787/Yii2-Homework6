@@ -18,6 +18,9 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property integer $id
  * @property string $username
+ * @property string $first_name
+ * @property string $last_name
+ * @property integer $age
  * @property string $email
  * @property string $password_hash
  * @property integer $status
@@ -51,63 +54,12 @@ class SiteUser extends ActiveRecord implements IdentityInterface
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['username', 'email', 'password'], 'filter', 'filter' => 'trim'],
-            [['username', 'email', 'status'], 'required'],
-            ['email', 'email'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
-            ['password', 'required', 'on' => 'create'],
-            ['username', 'unique', 'message' => 'Это имя занято.'],
-            ['email', 'unique', 'message' => 'Эта почта уже зарегистрирована.'],
-        ];
-    }
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'username' => 'Ник',
-            'email' => 'Email',
-            'password' => 'Password Hash',
-            'status' => 'Статус',
-            'auth_key' => 'Auth Key',
-            'created_at' => 'Дата создания',
-            'updated_at' => 'Дата изменения',
-        ];
-    }
-
     public static function findByUsername($username)
     {
         return static::findOne([
             'username' => $username
         ]);
     }
-
-    /*
-    public static function findByEmail($email)
-    {
-        return static::findOne([
-            'email' => $email
-        ]);
-    }
-    public static function findBySecretKey($key)
-    {
-        if (!static::isSecretKeyExpire($key))
-        {
-            return null;
-        }
-        return static::findOne([
-            'secret_key' => $key,
-        ]);
-    }
-    */
 
     /**
      * @inheritdoc

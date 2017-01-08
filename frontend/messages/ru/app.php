@@ -66,5 +66,16 @@ return [
     'Homework Name' => 'Название Домашки',
     'Thema ID' => 'Номер Темы',
     'Thema Name' => 'Название Темы',
+    'This Username is already taken' =>
+        'Этот Логин уже используется',
+    'This Email is already taken' =>
+        'Эта Почта уже используется',
+    'There is error while registration' =>
+        'Возникла ошибка при регистрации',
+    'Error while registration' =>
+        'Ошибка при регистрации',
+    'First Name' => 'Имя',
+    'Last Name' => 'Фамилия',
+    'Age' => 'Возраст'
 
 ];
