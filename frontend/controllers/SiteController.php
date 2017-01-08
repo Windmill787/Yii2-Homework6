@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\SiteUser;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -12,6 +13,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\RegForm;
 
 /**
  * Site controller
@@ -26,10 +28,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['signup', 'error'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -43,7 +45,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['get'],
                 ],
             ],
         ];
@@ -209,5 +211,32 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function actionReg()
+    {
+        $model = new RegForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()):
+            if ($user = $model->reg()):
+                if ($user->status === SiteUser::STATUS_ACTIVE):
+                    if (Yii::$app->getUser()->login($user)):
+                        return $this->goHome();
+                    endif;
+                endif;
+            else:
+                Yii::$app->session->setFlash('error', 'Возникла ошибка при регистрации.');
+                Yii::error('Ошибка при регистрации');
+                return $this->refresh();
+            endif;
+        endif;
+
+
+        return $this->render(
+            'reg',
+            [
+                'model' => $model
+            ]
+        );
     }
 }
