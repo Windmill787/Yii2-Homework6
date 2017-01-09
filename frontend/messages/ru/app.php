@@ -76,6 +76,15 @@ return [
         'Ошибка при регистрации',
     'First Name' => 'Имя',
     'Last Name' => 'Фамилия',
-    'Age' => 'Возраст'
-
+    'Age' => 'Возраст',
+    'Please fill out your email. A link to reset password will be sent there' =>
+        'Пожалуйста, заполните вашу электронную почту. Ссылка для сброса пароля будет отправлена ​​туда',
+    'Request password reset' =>
+        'Сброс пароля',
+    'Send' => 'Отправить',
+    'Gallery' => 'Галерея',
+    'This is a Gallery' => 'Это Галерея',
+    'Hope you enjoy' => 'Надеемся Вам понравится',
+    'You don\'t have permission for this page' =>
+        'У вас нет доступа к этой странице'
 ];

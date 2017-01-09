@@ -12,9 +12,8 @@ use yii\filters\AccessControl;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
 use frontend\models\ContactForm;
-use common\models\RegForm;
+use Exception;
 
 /**
  * Site controller
@@ -29,7 +28,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'denyCallback' => function ($rule, $action) {
+                    throw new Exception(Yii::t('app', 'You don\'t have permission for this page'));
+                },
+                'only' => ['logout', 'gallery', 'contact'],
                 'rules' => [
                     [
                         'actions' => ['signup', 'error'],
@@ -37,7 +39,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'gallery', 'contact'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -144,11 +146,8 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    /**
-     * Signs user up.
-     *
-     * @return mixed
-     */
+
+    /*
     public function actionSignup()
     {
         $model = new SignupForm();
@@ -164,6 +163,7 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    */
 
     /**
      * Requests password reset.
@@ -232,12 +232,14 @@ class SiteController extends Controller
             endif;
         endif;
 
-
-        return $this->render(
-            'registration',
-            [
+        return $this->render('registration', [
                 'model' => $model
-            ]
-        );
+            ]);
+    }
+
+    public function actionGallery()
+    {
+        return $this->render('gallery', [
+        ]);
     }
 }

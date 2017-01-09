@@ -8,23 +8,35 @@
 
 namespace frontend\widgets\MultiLang;
 
-use yii\helpers\Html;
 use Yii;
+use yii\bootstrap\ButtonDropdown;
 ?>
 
 <div class="btn-group <?= $cssClass; ?>">
 
-
-            <?= Html::a('Go to English', array_merge(
-                \Yii::$app->request->get(),
-                [\Yii::$app->controller->route, 'language' => 'en']
-            )); ?>
-
-            <br>
-
-            <?= Html::a('Перейти на русский', array_merge(
-                \Yii::$app->request->get(),
-                [\Yii::$app->controller->route, 'language' => 'ru']
-            )); ?>
-
+    <?= ButtonDropdown::widget([
+    'label' => Yii::t('app', 'Language'),
+        'options' => [
+        'class' => 'btn-lg btn-link',
+        ],
+            'dropdown' => [
+                'items' => [
+                    [
+                        'label' => 'Go to English',
+                        'url' => array_merge(
+                            Yii::$app->request->get(),
+                            [Yii::$app->controller->route, 'language' => 'en']
+                        )
+                    ],
+                    [
+                        'label' => 'Перейти на Русский',
+                        'url' => array_merge(
+                            Yii::$app->request->get(),
+                            [Yii::$app->controller->route, 'language' => 'ru']
+                        )
+                    ]
+                ]
+            ]
+    ]);
+    ?>
 </div>

@@ -6,6 +6,5 @@
  * Time: 21:35
  */
 return [
-    'Привет' => 'Hello',
-    'Максим' => 'Maxim',
+    'Language' => 'Язык'
 ];

@@ -60,6 +60,10 @@ class RegistrationForm extends Model
     }
     public function registration()
     {
+        if (!$this->validate()) {
+            return null;
+        }
+
         $user = new SiteUser();
         $user->username = $this->username;
         $user->first_name = $this->first_name;
@@ -69,6 +73,7 @@ class RegistrationForm extends Model
         $user->status = $this->status;
         $user->setPassword($this->password);
         $user->generateAuthKey();
+
         return $user->save() ? $user : null;
     }
 }

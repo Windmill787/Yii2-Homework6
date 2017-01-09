@@ -67,13 +67,17 @@ GreyAsset::register($this);
             if(Yii::$app->user->isGuest)
             {
                 $menuItems[] =
-                ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
+                    ['label' => Yii::t('app', 'Login'), 'url' => ['/site/login']];
                 $menuItems[] =
-                ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/registration']];
+                    ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/registration']];
             }
             else {
                 $menuItems[] =
-                ['label' => Yii::t('app', 'Logout').'('.Yii::$app->user->identity->username.')', 'url' => ['/site/logout']];
+                    ['label' => Yii::t('app', 'Gallery'), 'url' => ['/site/gallery']];
+                $menuItems[] =
+                    ['label' => Yii::t('app', 'Logout').'('.Yii::$app->user->identity->username.')', 'url' => ['/site/logout']];
+
+
             }
 
             echo Menu::widget([
