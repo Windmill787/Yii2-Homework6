@@ -61,7 +61,6 @@ GreyAsset::register($this);
             ['label' => Yii::t('app', 'Test'), 'url' => ['/test/index']],
             ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],
             ['label' => Yii::t('app', 'About'), 'url' => ['/site/about']],
-            ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']]
             ];
 
             if(Yii::$app->user->isGuest)
@@ -72,6 +71,8 @@ GreyAsset::register($this);
                     ['label' => Yii::t('app', 'Signup'), 'url' => ['/site/registration']];
             }
             else {
+                $menuItems[] =
+                ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']];
                 $menuItems[] =
                     ['label' => Yii::t('app', 'Gallery'), 'url' => ['/site/gallery']];
                 $menuItems[] =

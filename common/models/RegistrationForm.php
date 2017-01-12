@@ -10,7 +10,11 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
+use common\models\SiteUser;
 
+/**
+ * Registration form
+ */
 class RegistrationForm extends Model
 {
     public $username;
@@ -19,33 +23,42 @@ class RegistrationForm extends Model
     public $last_name;
     public $age;
     public $password;
-    public $status;
 
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
-            [['username', 'email', 'first_name', 'last_name', 'age', 'password'],'filter', 'filter' => 'trim'],
+            [['username', 'email', 'first_name', 'last_name', 'age'],'filter', 'filter' => 'trim'],
             [['username', 'first_name', 'last_name', 'email', 'password'],'required'],
+
+            ['username', 'unique', 'targetClass' => SiteUser::className(),
+                'message' => Yii::t('app', 'This Username is already taken')],
             ['username', 'string', 'min' => 2, 'max' => 20],
+
             ['first_name', 'string', 'min' => 2, 'max' => 30],
             ['last_name', 'string', 'min' => 2, 'max' => 30],
             ['age', 'integer', 'min' => 1, 'max' => 150],
+
             ['password', 'string', 'min' => 6, 'max' => 15],
-            ['username', 'unique',
-                'targetClass' => SiteUser::className(),
-                'message' => Yii::t('app', 'This Username is already taken')],
+
+            ['email', 'unique', 'targetClass' => SiteUser::className(),
+                'message' => Yii::t('app', 'This Email is already used')],
             ['email', 'email'],
-            ['email', 'unique',
-                'targetClass' => SiteUser::className(),
-                'message' => Yii::t('app', 'This Email is already taken')],
+
+            /*
             ['status', 'default', 'value' => SiteUser::STATUS_ACTIVE, 'on' => 'default'],
             ['status', 'in', 'range' =>[
                 SiteUser::STATUS_NOT_ACTIVE,
                 SiteUser::STATUS_ACTIVE
             ]],
             ['status', 'default', 'value' => SiteUser::STATUS_NOT_ACTIVE, 'on' => 'emailActivation'],
+            */
         ];
     }
+
     public function attributeLabels()
     {
         return [
@@ -55,9 +68,14 @@ class RegistrationForm extends Model
             'last_name' => Yii::t('app', 'Last Name'),
             'age' => Yii::t('app', 'Age'),
             'password' => Yii::t('app', 'Password'),
-            'status' => Yii::t('app', 'Status'),
         ];
     }
+
+    /**
+     * Registration of users.
+     *
+     * @return SiteUser|null the saved model or null if saving fails
+     */
     public function registration()
     {
         if (!$this->validate()) {
@@ -70,7 +88,6 @@ class RegistrationForm extends Model
         $user->last_name = $this->last_name;
         $user->age = $this->age;
         $user->email = $this->email;
-        $user->status = $this->status;
         $user->setPassword($this->password);
         $user->generateAuthKey();
 

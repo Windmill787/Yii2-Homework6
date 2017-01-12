@@ -68,7 +68,7 @@ return [
     'Thema Name' => 'Название Темы',
     'This Username is already taken' =>
         'Этот Логин уже используется',
-    'This Email is already taken' =>
+    'This Email is already used' =>
         'Эта Почта уже используется',
     'There is error while registration' =>
         'Возникла ошибка при регистрации',
@@ -86,5 +86,9 @@ return [
     'This is a Gallery' => 'Это Галерея',
     'Hope you enjoy' => 'Надеемся Вам понравится',
     'You don\'t have permission for this page' =>
-        'У вас нет доступа к этой странице'
+        'У вас нет доступа к этой странице',
+    'Do you already have an account on one of these sites? Click the logo to log in with it here:' =>
+        'У Вас уже есть учетная запись на одном из этих сайтов? Нажмите на логотип, чтобы войти с ним здесь:',
+    'Please fill out your email. A link to reset password will be sent there.' =>
+        'Пожалуйста, заполните поле Вашей электронной почты. Ссылка для сброса пароля будет отправлена ​​туда.'
 ];

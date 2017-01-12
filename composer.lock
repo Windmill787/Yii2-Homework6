@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7b6243625e561a127bbd5002a45e03c5",
-    "content-hash": "6a6b14d7e0e1a12b2eb70da1cbb4adf1",
+    "hash": "79ce7367d0c208aa7172bc9762b6b4cf",
+    "content-hash": "854553b1476f99f2567a71993f841f0c",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -406,6 +406,214 @@
                 "html"
             ],
             "time": "2016-07-16 12:58:58"
+        },
+        {
+            "name": "iignatov/lightopenid",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WillSkates/LightOpenID.git",
+                "reference": "15264c31aef8bbe7ea18f12b6da4ccdb9927f9fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WillSkates/LightOpenID/zipball/15264c31aef8bbe7ea18f12b6da4ccdb9927f9fa",
+                "reference": "15264c31aef8bbe7ea18f12b6da4ccdb9927f9fa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "openid.php",
+                    "provider/provider.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignat Ignatov",
+                    "homepage": "https://github.com/iignatov/LightOpenID"
+                },
+                {
+                    "name": "Mewp",
+                    "homepage": "https://code.google.com/p/lightopenid/"
+                }
+            ],
+            "description": "Lightweight PHP5 library for easy OpenID authentication.",
+            "homepage": "https://github.com/iignatov/LightOpenID",
+            "keywords": [
+                "Authentication",
+                "OpenId",
+                "security"
+            ],
+            "time": "2014-01-27 06:01:05"
+        },
+        {
+            "name": "lusitanian/oauth",
+            "version": "v0.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Lusitanian/PHPoAuthLib.git",
+                "reference": "4ce8c488971410233eb3b1e6d9ac4e81debb41d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Lusitanian/PHPoAuthLib/zipball/4ce8c488971410233eb3b1e6d9ac4e81debb41d5",
+                "reference": "4ce8c488971410233eb3b1e6d9ac4e81debb41d5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "predis/predis": "0.8.*@dev",
+                "symfony/http-foundation": "~2.1"
+            },
+            "suggest": {
+                "ext-openssl": "Allows for usage of secure connections with the stream-based HTTP client.",
+                "predis/predis": "Allows using the Redis storage backend.",
+                "symfony/http-foundation": "Allows using the Symfony Session storage backend."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "OAuth": "src",
+                    "OAuth\\Unit": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Desberg",
+                    "email": "david@daviddesberg.com"
+                },
+                {
+                    "name": "Pieter Hordijk",
+                    "email": "info@pieterhordijk.com"
+                }
+            ],
+            "description": "PHP 5.3+ oAuth 1/2 Library",
+            "keywords": [
+                "Authentication",
+                "authorization",
+                "oauth",
+                "security"
+            ],
+            "time": "2015-09-09 06:43:02"
+        },
+        {
+            "name": "nodge/lightopenid",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nodge/LightOpenID.git",
+                "reference": "a5492cc0c932c557b7e9b54a6e5bbd85cc5fa041"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nodge/LightOpenID/zipball/a5492cc0c932c557b7e9b54a6e5bbd85cc5fa041",
+                "reference": "a5492cc0c932c557b7e9b54a6e5bbd85cc5fa041",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "openid.php",
+                    "provider/provider.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT License"
+            ],
+            "authors": [
+                {
+                    "name": "Mewp",
+                    "homepage": "http://code.google.com/p/lightopenid/"
+                },
+                {
+                    "name": "Ignat Ignatov",
+                    "homepage": "https://github.com/iignatov/LightOpenID"
+                }
+            ],
+            "description": "Lightweight PHP5 library for easy OpenID authentication.",
+            "homepage": "https://github.com/Nodge/LightOpenID",
+            "keywords": [
+                "Authentication",
+                "OpenId"
+            ],
+            "time": "2013-08-31 16:48:56"
+        },
+        {
+            "name": "nodge/yii2-eauth",
+            "version": "2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Nodge/yii2-eauth.git",
+                "reference": "f45efd95e3853db33153cc1b856d1f648d221938"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Nodge/yii2-eauth/zipball/f45efd95e3853db33153cc1b856d1f648d221938",
+                "reference": "f45efd95e3853db33153cc1b856d1f648d221938",
+                "shasum": ""
+            },
+            "require": {
+                "lib-curl": "*",
+                "lusitanian/oauth": "~0.3.0",
+                "nodge/lightopenid": "~1.1.0",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "nodge\\eauth\\Bootstrap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "nodge\\eauth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "New BSD License"
+            ],
+            "authors": [
+                {
+                    "name": "Maxim Zemskov",
+                    "email": "nodge@yandex.ru",
+                    "homepage": "http://nodge.ru/"
+                }
+            ],
+            "description": "Yii2 EAuth Extension. EAuth allows to authenticate users with accounts on other websites (Google, Facebook, Twitter, etc).",
+            "homepage": "https://github.com/Nodge/yii2-eauth",
+            "keywords": [
+                "Authentication",
+                "OpenId",
+                "eauth",
+                "extension",
+                "oauth",
+                "yii2"
+            ],
+            "time": "2016-01-13 18:15:48"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3126,7 +3334,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4.0"
+        "php": ">=5.4.0",
+        "lib-curl": "*"
     },
     "platform-dev": []
 }
