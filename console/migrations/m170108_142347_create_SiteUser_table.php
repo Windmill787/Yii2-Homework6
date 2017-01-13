@@ -20,8 +20,9 @@ class m170108_142347_create_SiteUser_table extends Migration
             'username' => $this->string()->notNull()->unique(),
             'first_name' => $this->string(30)->notNull(),
             'last_name' => $this->string(30)->notNull(),
-            'age' => $this->integer(3)->notNull(),
-            'email' => $this->string()->notNull(),
+            'age' => $this->integer(3),
+            'img' => $this->string(),
+            'email' => $this->string()->notNull()->unique(),
 
             'password_hash' => $this->string()->notNull(),
             'password_reset_token' => $this->string()->unique(),

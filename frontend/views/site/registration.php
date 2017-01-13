@@ -6,17 +6,18 @@
  * Time: 17:37
  */
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model common\models\RegistrationForm */
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
+/* @var $this yii\web\View */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model frontend\models\RegistrationForm */
 
 $this->title = Yii::t('app', 'Signup');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-registration">
+
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p><?= Yii::t('app', 'Please fill out the following fields to signup:'); ?></p>
@@ -24,7 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-lg-5">
 
-            <?php $form = ActiveForm::begin(['id' => 'form-registration']); ?>
+            <?php $form = ActiveForm::begin([
+                    'id' => 'form-registration',
+                    'options' => ['enctype' => 'multipart/form-data']
+            ]); ?>
 
                 <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
@@ -33,6 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'last_name') ?>
 
                 <?= $form->field($model, 'age') ?>
+
+                <?= $form->field($model, 'img')->fileInput()?>
 
                 <?= $form->field($model, 'email') ?>
 

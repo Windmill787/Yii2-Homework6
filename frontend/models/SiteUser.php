@@ -6,7 +6,7 @@
  * Time: 16:48
  */
 
-namespace common\models;
+namespace frontend\models;
 
 use Yii;
 use yii\db\ActiveRecord;
@@ -14,6 +14,7 @@ use yii\web\IdentityInterface;
 use yii\behaviors\TimestampBehavior;
 use nodge\eauth\ErrorException;
 use yii\base\NotSupportedException;
+use yii\web\UploadedFile;
 
 /**
  * SiteUser model
@@ -23,6 +24,7 @@ use yii\base\NotSupportedException;
  * @property string $first_name
  * @property string $last_name
  * @property integer $age
+ * @property string $img
  * @property string $email
  * @property string $password_hash
  * @property string $password_reset_token
@@ -43,6 +45,11 @@ class SiteUser extends ActiveRecord implements IdentityInterface
      */
     public $profile;
     public static $users;
+
+    public $string;
+    public $image;
+    public $filename;
+
 
     /**
      * @inheritdoc
@@ -229,5 +236,22 @@ class SiteUser extends ActiveRecord implements IdentityInterface
         $attributes['profile']['service'] = $service->getServiceName();
         Yii::$app->getSession()->set('user-'.$id, $attributes);
         return new self($attributes);
+    }
+
+    public function beforeSave($insert)
+    {
+        //if ($this->isNewRecord){
+            $this->string = substr(uniqid('img'), 0, 12);
+            $this->image = UploadedFile::getInstance($this, 'img');
+            $this->filename = 'static/images/'.$this->string.'.png';
+            //$this->image->saveAs($this->filename);
+            $this->img = '/'.$this->filename;
+        /*} else {
+            $this->photo = UploadedFile::getInstance($this, 'images');
+            if ($this->photo){
+                $this->photo->saveAs(substr($this->photo, 1));
+            }
+        }*/
+        return parent::beforeSave($insert);
     }
 }

@@ -6,11 +6,10 @@
  * Time: 16:30
  */
 
-namespace common\models;
+namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
-use common\models\SiteUser;
 
 /**
  * Registration form
@@ -23,6 +22,7 @@ class RegistrationForm extends Model
     public $last_name;
     public $age;
     public $password;
+    public $img;
 
 
     /**
@@ -48,6 +48,8 @@ class RegistrationForm extends Model
                 'message' => Yii::t('app', 'This Email is already used')],
             ['email', 'email'],
 
+            ['img', 'file']
+
             /*
             ['status', 'default', 'value' => SiteUser::STATUS_ACTIVE, 'on' => 'default'],
             ['status', 'in', 'range' =>[
@@ -68,6 +70,7 @@ class RegistrationForm extends Model
             'last_name' => Yii::t('app', 'Last Name'),
             'age' => Yii::t('app', 'Age'),
             'password' => Yii::t('app', 'Password'),
+            'photo' => Yii::t('app', 'Photo')
         ];
     }
 

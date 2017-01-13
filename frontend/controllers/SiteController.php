@@ -1,8 +1,8 @@
 <?php
 namespace frontend\controllers;
 
-use common\models\RegistrationForm;
-use common\models\SiteUser;
+use frontend\models\RegistrationForm;
+use frontend\models\SiteUser;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -16,6 +16,7 @@ use frontend\models\ContactForm;
 use Exception;
 use nodge\eauth\openid\ControllerBehavior;
 use nodge\eauth\ErrorException;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -263,5 +264,34 @@ class SiteController extends Controller
     public function actionGallery()
     {
         return $this->render('gallery');
+    }
+
+    public function actionProfile()
+    {
+        return $this->render('profile', [
+            'model' => $this->findModel(Yii::$app->user->id),
+        ]);
+    }
+
+    public function actionUpdate()
+    {
+        $model = $this->findModel(Yii::$app->user->id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('profile');
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    protected function findModel($id)
+    {
+        if (($model = SiteUser::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('User does not exist');
+        }
     }
 }

@@ -17,24 +17,26 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+            <div class="thumbnail">
+                <div class="caption">
+                    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+                    <?= $form->field($model, Yii::t('app', 'username'))
+                            ->textInput(['autofocus' => true]) ?>
+                    <?= $form->field($model, Yii::t('app', 'password'))->passwordInput() ?>
+                    <?= $form->field($model, Yii::t('app', 'rememberMe'))->checkbox() ?>
 
-                <?= $form->field($model, Yii::t('app', 'username'))->textInput(['autofocus' => true]) ?>
+                    <div style="color:#999;margin:1em 0">
+                        <?= Yii::t('app', 'If you forgot your password you can').' '.
+                        Html::a(Yii::t('app', 'reset it'), ['site/request-password-reset']) ?>.
+                    </div>
 
-                <?= $form->field($model, Yii::t('app', 'password'))->passwordInput() ?>
+                    <div class="form-group">
+                        <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    </div>
 
-                <?= $form->field($model, Yii::t('app', 'rememberMe'))->checkbox() ?>
-
-                <div style="color:#999;margin:1em 0">
-                    <?= Yii::t('app', 'If you forgot your password you can').' '.
-                    Html::a(Yii::t('app', 'reset it'), ['site/request-password-reset']) ?>.
+                    <?php ActiveForm::end(); ?>
                 </div>
-
-                <div class="form-group">
-                    <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
+            </div>
         </div>
     </div>
 </div>

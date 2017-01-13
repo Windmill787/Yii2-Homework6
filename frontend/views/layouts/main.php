@@ -72,13 +72,20 @@ GreyAsset::register($this);
             }
             else {
                 $menuItems[] =
-                ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']];
+                    ['label' => Yii::t('app', 'Profile'), 'url' => ['/site-user/index']];
+                $menuItems[] =
+                    ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']];
                 $menuItems[] =
                     ['label' => Yii::t('app', 'Gallery'), 'url' => ['/site/gallery']];
                 $menuItems[] =
-                    ['label' => Yii::t('app', 'Logout').'('.Yii::$app->user->identity->username.')', 'url' => ['/site/logout']];
+                    ['label' => Yii::t('app', 'Logout').'('.Yii::$app->user->identity->username.')',
+                        'url' => ['/site/logout'],
+                        'template' => '<a href="{url}" data-method="post">{label}</a>',];
 
-
+                /*
+                ['label' => Yii::t('app', 'Logout').'('.Yii::$app->user->identity->username.')',
+                        'url' => ['/site/logout'], ['data-method' => 'post']]
+                */
             }
 
             echo Menu::widget([

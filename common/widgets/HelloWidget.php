@@ -23,7 +23,7 @@ class HelloWidget extends Widget
         if (isset(Yii::$app->user->identity->username)){
             $this->username = Yii::$app->user->identity->username;
         }
-        $this->message = Yii::t('app', 'Hello').', '.Yii::t('app', $this->username);
+        $this->message = Yii::t('app', 'Hello').', '.$this->username;
     }
 
     public function run()

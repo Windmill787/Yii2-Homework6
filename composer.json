@@ -24,7 +24,8 @@
         "iignatov/lightopenid": "*",
         "lusitanian/oauth": "~0.3",
         "nodge/lightopenid": "~1.1.0",
-        "nodge/yii2-eauth": "~2.0"
+        "nodge/yii2-eauth": "~2.0",
+        "2amigos/yii2-ckeditor-widget" : "2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
