@@ -7,9 +7,10 @@
  */
 
 use yii\helpers\Html;
+use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\SiteUser */
+/* @var $model frontend\models\SiteUser */
 /* @var $form yii\widgets\ActiveForm */
 
 $this->title = Yii::t('app', 'Profile');
@@ -24,11 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="thumbnail">
                 <img src="<?= $model->img ?>" alt="img">
                 <div class="caption">
-                    <p>Username: <?= $model->username ?></p>
-                    <p>First Name: <?= $model->first_name ?></p>
-                    <p>Last Name: <?= $model->last_name ?></p>
-                    <p>Email: <?= $model->email ?></p>
-                    <p>Age: <?= $model->age ?></p>
+                    <?= DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                        'username',
+                            'first_name',
+                            'last_name',
+                            'age',
+                            'email',
+                    ],
+                    ]) ?>
                     <p><a href="update" class="btn btn-primary" role="button">Update</a></p>
                 </div>
             </div>

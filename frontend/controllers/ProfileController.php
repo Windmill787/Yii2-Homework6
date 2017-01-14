@@ -18,7 +18,7 @@ use Exception;
 /**
  * SiteUser controller
  */
-class SiteUserController extends Controller
+class ProfileController extends Controller
 {
     /**
      * @inheritdoc
@@ -54,7 +54,7 @@ class SiteUserController extends Controller
      */
     public function actionIndex()
     {
-        $model = $this->findModel(Yii::$app->user->id);
+        $model = $this->findModel();
 
         return $this->render('index', [
             'model' => $model,
@@ -68,7 +68,8 @@ class SiteUserController extends Controller
      */
     public function actionUpdate()
     {
-        $model = $this->findModel(Yii::$app->user->id);
+        $model = $this->findModel();
+        $model->scenario = SiteUser::SCENARIO_SITE_USER_PROFILE;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect('index');
@@ -82,13 +83,12 @@ class SiteUserController extends Controller
     /**
      * Finds the SiteUser model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
      * @return SiteUser the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel()
     {
-        if (($model = SiteUser::findOne($id)) !== null) {
+        if (($model = SiteUser::findOne(Yii::$app->user->identity->getId())) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('User does not exist');

@@ -72,7 +72,7 @@ GreyAsset::register($this);
             }
             else {
                 $menuItems[] =
-                    ['label' => Yii::t('app', 'Profile'), 'url' => ['/site-user/index']];
+                    ['label' => Yii::t('app', 'Profile'), 'url' => ['/profile/index']];
                 $menuItems[] =
                     ['label' => Yii::t('app', 'Contact'), 'url' => ['/site/contact']];
                 $menuItems[] =

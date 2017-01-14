@@ -265,33 +265,4 @@ class SiteController extends Controller
     {
         return $this->render('gallery');
     }
-
-    public function actionProfile()
-    {
-        return $this->render('profile', [
-            'model' => $this->findModel(Yii::$app->user->id),
-        ]);
-    }
-
-    public function actionUpdate()
-    {
-        $model = $this->findModel(Yii::$app->user->id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('profile');
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = SiteUser::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('User does not exist');
-        }
-    }
 }

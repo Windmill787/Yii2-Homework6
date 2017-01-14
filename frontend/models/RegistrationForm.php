@@ -48,14 +48,15 @@ class RegistrationForm extends Model
                 'message' => Yii::t('app', 'This Email is already used')],
             ['email', 'email'],
 
-            ['img', 'file']
+            ['img', 'file'],
 
             /*
             ['status', 'default', 'value' => SiteUser::STATUS_ACTIVE, 'on' => 'default'],
             ['status', 'in', 'range' =>[
                 SiteUser::STATUS_NOT_ACTIVE,
                 SiteUser::STATUS_ACTIVE
-            ]],
+            ]]
+
             ['status', 'default', 'value' => SiteUser::STATUS_NOT_ACTIVE, 'on' => 'emailActivation'],
             */
         ];

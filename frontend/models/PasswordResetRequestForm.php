@@ -3,7 +3,6 @@ namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
-use common\models\SiteUser;
 
 /**
  * Password reset request form
