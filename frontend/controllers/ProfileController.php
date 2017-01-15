@@ -8,6 +8,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\ProfileUpdateForm;
 use frontend\models\SiteUser;
 use Yii;
 use yii\web\Controller;
@@ -31,15 +32,14 @@ class ProfileController extends Controller
                 'denyCallback' => function ($rule, $action) {
                     throw new Exception(Yii::t('app', 'You don\'t have permission for this page'));
                 },
-                'only' => ['index', 'update'],
                 'rules' => [
-                    [
+                    /*[
                         'actions' => ['error'],
                         'allow' => true,
                         'roles' => ['?'],
-                    ],
+                    ],*/
                     [
-                        'actions' => ['index', 'update'],
+                        'controllers' => ['profile'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -68,11 +68,11 @@ class ProfileController extends Controller
      */
     public function actionUpdate()
     {
-        $model = $this->findModel();
-        $model->scenario = SiteUser::SCENARIO_SITE_USER_PROFILE;
+        $user = $this->findModel();
+        $model = new ProfileUpdateForm($user);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index');
+        if ($model->load(Yii::$app->request->post()) && $model->update()) {
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,

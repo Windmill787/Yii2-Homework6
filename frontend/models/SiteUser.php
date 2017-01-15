@@ -41,18 +41,12 @@ class SiteUser extends ActiveRecord implements IdentityInterface
     const STATUS_NOT_ACTIVE = 1;
     const STATUS_ACTIVE = 10;
 
-    const SCENARIO_SITE_USER_PROFILE = 'profile';
-
     /**
      * @var array EAuth attributes
      */
-    public $profile;
-    public static $users;
-
     public $string;
     public $image;
     public $filename;
-
 
     /**
      * @inheritdoc
@@ -81,13 +75,6 @@ class SiteUser extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
-    }
-
-    public function scenarios()
-    {
-        return ArrayHelper::merge(parent::scenarios(), [
-            self::SCENARIO_SITE_USER_PROFILE => ['username', 'first_name', 'last_name', 'age', 'email'],
-        ]);
     }
 
     /**
@@ -250,18 +237,18 @@ class SiteUser extends ActiveRecord implements IdentityInterface
 
     public function beforeSave($insert)
     {
-        if ($this->isNewRecord){
+        //if ($this->isNewRecord){
             $this->string = substr(uniqid('img'), 0, 12);
             $this->image = UploadedFile::getInstance($this, 'img');
             $this->filename = 'static/images/'.$this->string.'.png';
             //$this->image->saveAs($this->filename);
             $this->img = '/'.$this->filename;
-        } else {
+        /*} else {
             $this->img = UploadedFile::getInstance($this, 'images');
             if ($this->img){
                 $this->img->saveAs(substr($this->img, 1));
             }
-        }
+        }*/
         return parent::beforeSave($insert);
     }
 }

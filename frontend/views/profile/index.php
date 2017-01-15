@@ -23,19 +23,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-                <img src="<?= $model->img ?>" alt="img">
+                <img src="<?= $model->img ?>" alt="No Image"
+                     onerror="this.src = 'http://xn--174-5cd3cgu2f.xn--p1ai/wp-content/uploads/2015/09/noavatar.png'">
                 <div class="caption">
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                        'username',
+                            'username',
                             'first_name',
                             'last_name',
                             'age',
                             'email',
                     ],
                     ]) ?>
-                    <p><a href="update" class="btn btn-primary" role="button">Update</a></p>
+                    <p><a href="update" class="btn btn-primary" role="button"><?=Yii::t('app', 'Update')?></a></p>
                 </div>
             </div>
         </div>

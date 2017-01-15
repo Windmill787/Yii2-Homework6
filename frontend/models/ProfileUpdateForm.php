@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: max
- * Date: 08.01.17
- * Time: 16:30
+ * Date: 14.01.17
+ * Time: 16:11
  */
 
 namespace frontend\models;
@@ -11,28 +11,41 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 
-/**
- * Registration form
- */
-class RegistrationForm extends Model
+class ProfileUpdateForm extends Model
 {
     public $username;
-    public $email;
     public $first_name;
     public $last_name;
     public $age;
-    public $password;
     public $img;
-
+    public $email;
 
     /**
-     * @inheritdoc
+     * @var SiteUser
      */
+    private $_user;
+
+    public function __construct(SiteUser $user, $config = [])
+    {
+        $this->_user = $user;
+        parent::__construct($config);
+    }
+
+    public function init()
+    {
+        $this->username = $this->_user->username;
+        $this->first_name = $this->_user->first_name;
+        $this->last_name = $this->_user->last_name;
+        $this->age = $this->_user->age;
+        $this->img = $this->_user->img;
+        $this->email = $this->_user->email;
+        parent::init();
+    }
+
     public function rules()
     {
         return [
             [['username', 'email', 'first_name', 'last_name', 'age'],'filter', 'filter' => 'trim'],
-            [['username', 'first_name', 'last_name', 'email', 'password'],'required'],
 
             ['username', 'unique', 'targetClass' => SiteUser::className(),
                 'message' => Yii::t('app', 'This Username is already taken')],
@@ -42,23 +55,11 @@ class RegistrationForm extends Model
             ['last_name', 'string', 'min' => 2, 'max' => 30],
             ['age', 'integer', 'min' => 1, 'max' => 150],
 
-            ['password', 'string', 'min' => 6, 'max' => 15],
+            ['img', 'file'],
 
             ['email', 'unique', 'targetClass' => SiteUser::className(),
                 'message' => Yii::t('app', 'This Email is already used')],
-            ['email', 'email'],
-
-            ['img', 'file'],
-
-            /*
-            ['status', 'default', 'value' => SiteUser::STATUS_ACTIVE, 'on' => 'default'],
-            ['status', 'in', 'range' =>[
-                SiteUser::STATUS_NOT_ACTIVE,
-                SiteUser::STATUS_ACTIVE
-            ]]
-
-            ['status', 'default', 'value' => SiteUser::STATUS_NOT_ACTIVE, 'on' => 'emailActivation'],
-            */
+            ['email', 'email']
         ];
     }
 
@@ -66,39 +67,29 @@ class RegistrationForm extends Model
     {
         return [
             'username' => Yii::t('app', 'Username'),
-            'email' => Yii::t('app', 'Email'),
             'first_name' => Yii::t('app', 'First Name'),
             'last_name' => Yii::t('app', 'Last Name'),
             'age' => Yii::t('app', 'Age'),
-            'password' => Yii::t('app', 'Password'),
-            'img' => Yii::t('app', 'Img')
+            'img' => Yii::t('app', 'Img'),
+            'email' => Yii::t('app', 'Email')
         ];
     }
 
-    /**
-     * Registration of users.
-     *
-     * @return SiteUser|null the saved model or null if saving fails
-     */
-    public function registration()
+    public function update()
     {
         if (!$this->validate()) {
             return null;
         }
 
-        $user = new SiteUser();
+        $user = $this->_user;
         $user->username = $this->username;
         $user->first_name = $this->first_name;
         $user->last_name = $this->last_name;
         $user->age = $this->age;
+        $user->img = $this->img;
         $user->email = $this->email;
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
-
-        $auth = Yii::$app->authManager;
-        $authorRole = $auth->getRole('author');
-        $auth->assign($authorRole, $user->getId());
 
         return $user->save() ? $user : null;
     }
+
 }

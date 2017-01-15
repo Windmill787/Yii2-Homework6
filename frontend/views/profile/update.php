@@ -8,6 +8,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\SiteUser */
@@ -32,12 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'age') ?>
 
-            <?php // $form->field($model, 'img')->fileInput() ?>
+            <?= $form->field($model, 'img')->fileInput() ?>
 
             <?= $form->field($model, 'email')->input('email', ['maxlength' => true]) ?>
 
             <div class="form-group">
-                <?= Html::submitButton(Yii::t('app', 'Update'), ['class' => 'btn btn-primary']) ?>
+                <?= Html::a(Yii::t('app', 'Back'), Url::to('index'), ['class' => 'btn btn-danger'])?>
+                <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
