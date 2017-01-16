@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'homework_name',
             'thema_id',
 
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view}'],
         ],
     ]);
 ?>

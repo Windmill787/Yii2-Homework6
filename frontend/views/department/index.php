@@ -6,6 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\DepartmentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $model common\models\Department */
 
 $this->title = Yii::t('app', 'Departments');
 $this->params['breadcrumbs'][] = $this->title;
@@ -21,8 +22,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            Yii::t('app', 'department_name')
+            Yii::t('app', 'department_name'),
 
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view}'],
         ],
-    ]); ?>
+    ]);
+
+    ?>
 </div>

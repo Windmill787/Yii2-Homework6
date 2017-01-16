@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Students */
 
-$this->title = $model->id;
+$this->title = $model->student_name;
 $this->params['breadcrumbs'][] = ['label' => 'Students', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -22,5 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'department_id',
         ],
     ]) ?>
+
+    <p><a href="index" class="btn btn-default" role="button"><?=Yii::t('app', 'Back')?></a></p>
 
 </div>

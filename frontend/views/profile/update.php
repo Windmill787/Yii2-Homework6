@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'email')->input('email', ['maxlength' => true]) ?>
 
             <div class="form-group">
-                <?= Html::a(Yii::t('app', 'Back'), Url::to('index'), ['class' => 'btn btn-danger'])?>
+                <?= Html::a(Yii::t('app', 'Back'), Url::to('index'), ['class' => 'btn btn-default'])?>
                 <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
             </div>
 

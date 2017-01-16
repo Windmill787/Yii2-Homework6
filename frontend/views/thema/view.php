@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Thema */
 
-$this->title = $model->id;
+$this->title = $model->thema_name;
 $this->params['breadcrumbs'][] = ['label' => 'Themas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -21,5 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'thema_name',
         ],
     ]) ?>
+
+    <p><a href="index" class="btn btn-default" role="button"><?=Yii::t('app', 'Back')?></a></p>
 
 </div>

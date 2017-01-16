@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'student_name',
             'department_id',
 
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view}'],
         ],
     ]); ?>
 </div>
