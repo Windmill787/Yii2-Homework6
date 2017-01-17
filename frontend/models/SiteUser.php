@@ -16,6 +16,7 @@ use nodge\eauth\ErrorException;
 use yii\base\NotSupportedException;
 use yii\web\UploadedFile;
 use yii\helpers\ArrayHelper;
+use \rmrevin\yii\module\Comments\interfaces\CommentatorInterface;
 
 /**
  * SiteUser model
@@ -35,7 +36,9 @@ use yii\helpers\ArrayHelper;
  * @property integer $updated_at
  * @property string $password write-only password
  */
-class SiteUser extends ActiveRecord implements IdentityInterface
+class SiteUser extends ActiveRecord implements
+    IdentityInterface,
+    CommentatorInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_NOT_ACTIVE = 1;
@@ -136,6 +139,21 @@ class SiteUser extends ActiveRecord implements IdentityInterface
     public static function findIdentityByAccessToken($token, $type = null)
     {
         throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+    }
+
+    public function getCommentatorAvatar()
+    {
+        return $this->img;
+    }
+
+    public function getCommentatorName()
+    {
+        return $this->username;
+    }
+
+    public function getCommentatorUrl()
+    {
+        return false; // or false, if user does not have a public page
     }
 
     /**

@@ -11,6 +11,13 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'modules' => [
+        'comments' => [
+            'class' => 'rmrevin\yii\module\Comments\Module',
+            'userIdentityClass' => 'frontend\models\SiteUser',
+            'useRbac' => false
+        ],
+    ],
     'components' => [
         'eauth' => [
             'class' => 'nodge\eauth\EAuth',
