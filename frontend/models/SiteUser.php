@@ -36,9 +36,7 @@ use \rmrevin\yii\module\Comments\interfaces\CommentatorInterface;
  * @property integer $updated_at
  * @property string $password write-only password
  */
-class SiteUser extends ActiveRecord implements
-    IdentityInterface,
-    CommentatorInterface
+class SiteUser extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_NOT_ACTIVE = 1;
@@ -141,12 +139,12 @@ class SiteUser extends ActiveRecord implements
         throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
 
-    public function getCommentatorAvatar()
+    public function getAvatar()
     {
         return $this->img;
     }
 
-    public function getCommentatorName()
+    public function getUsername()
     {
         return $this->username;
     }

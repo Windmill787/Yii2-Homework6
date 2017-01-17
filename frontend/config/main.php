@@ -11,11 +11,22 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
-    'modules' => [
+    'controllerMap' => [
+        'comments' => 'yii2mod\comments\controllers\ManageController',
+        /* Also you can override some controller properties in following way:
         'comments' => [
-            'class' => 'rmrevin\yii\module\Comments\Module',
-            'userIdentityClass' => 'frontend\models\SiteUser',
-            'useRbac' => false
+            'class' => 'yii2mod\comments\controllers\ManageController',
+            'searchClass' => [
+                'class' => 'yii2mod\comments\models\search\CommentSearch',
+                'pageSize' => 25
+            ],
+            'indexView' => 'custom path to index view file',
+            'updateView' => 'custom path to update view file',
+        ], */
+    ],
+    'modules' => [
+        'comment' => [
+            'class' => 'yii2mod\comments\Module',
         ],
     ],
     'components' => [
@@ -183,6 +194,10 @@ return [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@frontend/messages',
                     'sourceLanguage' => 'en',
+                ],
+                'yii2mod.comments' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@yii2mod/comments/messages',
                 ],
             ],
         ],
