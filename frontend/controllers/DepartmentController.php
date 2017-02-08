@@ -35,6 +35,11 @@ class DepartmentController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    /*[
+                        'actions' => [''],
+                        'allow' => true,
+                        'roles' => ['createCommentary']
+                    ],*/
                 ],
             ],
             'verbs' => [

@@ -11,7 +11,7 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 
-class ProfileUpdateForm extends Model
+class ProfileForm extends Model
 {
     public $username;
     public $first_name;
@@ -33,11 +33,11 @@ class ProfileUpdateForm extends Model
 
     public function init()
     {
-        $this->username = $this->_user->username;
+        $this->username = $this->_user->getUsername();
         $this->first_name = $this->_user->first_name;
         $this->last_name = $this->_user->last_name;
         $this->age = $this->_user->age;
-        $this->img = $this->_user->img;
+        $this->img = $this->_user->getAvatar();
         $this->email = $this->_user->email;
         parent::init();
     }
@@ -70,7 +70,7 @@ class ProfileUpdateForm extends Model
             'first_name' => Yii::t('app', 'First Name'),
             'last_name' => Yii::t('app', 'Last Name'),
             'age' => Yii::t('app', 'Age'),
-            'img' => Yii::t('app', 'Img'),
+            'img' => Yii::t('app', 'Image'),
             'email' => Yii::t('app', 'Email')
         ];
     }

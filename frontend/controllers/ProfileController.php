@@ -8,7 +8,7 @@
 
 namespace frontend\controllers;
 
-use frontend\models\ProfileUpdateForm;
+use frontend\models\ProfileForm;
 use frontend\models\SiteUser;
 use Yii;
 use yii\web\Controller;
@@ -69,7 +69,7 @@ class ProfileController extends Controller
     public function actionUpdate()
     {
         $user = $this->findModel();
-        $model = new ProfileUpdateForm($user);
+        $model = new ProfileForm($user);
 
         if ($model->load(Yii::$app->request->post()) && $model->update()) {
             return $this->redirect(['index']);

@@ -77,6 +77,7 @@ return [
     'First Name' => 'Имя',
     'Last Name' => 'Фамилия',
     'Age' => 'Возраст',
+    'Image' => 'Аватар',
     'Please fill out your email. A link to reset password will be sent there' =>
         'Пожалуйста, заполните вашу электронную почту. Ссылка для сброса пароля будет отправлена ​​туда',
     'Request password reset' =>
@@ -95,5 +96,6 @@ return [
     'Profile' => 'Профиль',
     'Back' => 'Назад',
     'Save' => 'Сохранить',
-    'Note' => 'Запись'
+    'Note' => 'Запись',
+    'Text' => 'Текст'
 ];

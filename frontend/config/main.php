@@ -43,90 +43,34 @@ return [
                 'google' => [
                     // register your app here: https://code.google.com/apis/console/
                     'class' => 'nodge\eauth\services\GoogleOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
+                    'clientId' => '1060355684369-s08tokc0fmfmtjg7ib3gke3dbtf3ojc3.apps.googleusercontent.com',
+                    'clientSecret' => 'XIfK6fHJ7nReEXbj6kMatIcl',
                     'title' => 'Google',
                 ],
                 'twitter' => [
                     // register your app here: https://dev.twitter.com/apps/new
                     'class' => 'nodge\eauth\services\TwitterOAuth1Service',
-                    'key' => '...',
-                    'secret' => '...',
-                ],
-                'yandex' => [
-                    // register your app here: https://oauth.yandex.ru/client/my
-                    'class' => 'nodge\eauth\services\YandexOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
-                    'title' => 'Yandex',
+                    'key' => 'Mvt65Tx0V1DAH0pzKEN92kuzC',
+                    'secret' => 'kf9L2ovn8J39YMIrv7FW8c0l4lwvEP88HEp0L5ID9P1bgn7WH9',
                 ],
                 'facebook' => [
                     // register your app here: https://developers.facebook.com/apps/
                     'class' => 'nodge\eauth\services\FacebookOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
-                ],
-                'yahoo' => [
-                    'class' => 'nodge\eauth\services\YahooOpenIDService',
-                    //'realm' => '*.example.org', // your domain, can be with wildcard to authenticate on subdomains.
-                ],
-                'linkedin' => [
-                    // register your app here: https://www.linkedin.com/secure/developer
-                    'class' => 'nodge\eauth\services\LinkedinOAuth1Service',
-                    'key' => '...',
-                    'secret' => '...',
-                    'title' => 'LinkedIn (OAuth1)',
-                ],
-                'linkedin_oauth2' => [
-                    // register your app here: https://www.linkedin.com/secure/developer
-                    'class' => 'nodge\eauth\services\LinkedinOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
-                    'title' => 'LinkedIn (OAuth2)',
+                    'clientId' => '939717799494106',
+                    'clientSecret' => 'd6c7a90a92f5dd8904a7a20e03e22d4e',
                 ],
                 'github' => [
                     // register your app here: https://github.com/settings/applications
                     'class' => 'nodge\eauth\services\GitHubOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
-                ],
-                'live' => [
-                    // register your app here: https://account.live.com/developers/applications/index
-                    'class' => 'nodge\eauth\services\LiveOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
-                ],
-                'steam' => [
-                    'class' => 'nodge\eauth\services\SteamOpenIDService',
-                    //'realm' => '*.example.org', // your domain, can be with wildcard to authenticate on subdomains.
-                    'apiKey' => '...', // Optional. You can get it here: https://steamcommunity.com/dev/apikey
-                ],
-                'instagram' => [
-                    // register your app here: https://instagram.com/developer/register/
-                    'class' => 'nodge\eauth\services\InstagramOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
+                    'clientId' => 'fd6fc691a1f324b611a8',
+                    'clientSecret' => 'd7f0602baabb438762ecbeb117955b43a15801aa',
                 ],
                 'vkontakte' => [
                     // register your app here: https://vk.com/editapp?act=create&site=1
                     'class' => 'nodge\eauth\services\VKontakteOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
-                ],
-                'mailru' => [
-                    // register your app here: http://api.mail.ru/sites/my/add
-                    'class' => 'nodge\eauth\services\MailruOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
-                ],
-                'odnoklassniki' => [
-                    // register your app here: http://dev.odnoklassniki.ru/wiki/pages/viewpage.action?pageId=13992188
-                    // ... or here: http://www.odnoklassniki.ru/dk?st.cmd=appsInfoMyDevList&st._aid=Apps_Info_MyDev
-                    'class' => 'nodge\eauth\services\OdnoklassnikiOAuth2Service',
-                    'clientId' => '...',
-                    'clientSecret' => '...',
-                    'clientPublic' => '...',
-                    'title' => 'Odnoklas.',
+                    'clientId' => '5835432',
+                    'clientSecret' => 'JoUoADwCeQEYa1Nj8509',
+                    'title' => 'VKontakte',
                 ],
             ],
         ],
@@ -161,6 +105,9 @@ return [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
+                    'logFile' => '@app/runtime/logs/eauth.log',
+                    'categories' => ['nodge\eauth\*'],
+                    'logVars' => []
                 ],
             ],
         ],

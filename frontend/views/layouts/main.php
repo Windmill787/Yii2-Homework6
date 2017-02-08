@@ -78,6 +78,8 @@ GreyAsset::register($this);
                 $menuItems[] =
                     ['label' => Yii::t('app', 'Gallery'), 'url' => ['/site/gallery']];
                 $menuItems[] =
+                    ['label' => Yii::t('app', 'Crawler'), 'url' => ['/crawler/index']];
+                $menuItems[] =
                     ['label' => Yii::t('app', 'Logout').'('.Yii::$app->user->identity->username.')',
                         'url' => ['/site/logout'],
                         'template' => '<a href="{url}" data-method="post">{label}</a>',];
