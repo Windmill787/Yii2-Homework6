@@ -1,5 +1,6 @@
 <?php
 return [
+    'bootstrap' => ['log'],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'authManager' => [
@@ -14,6 +15,19 @@ return [
         ],
         'xml' => [
             'class' => 'common\crawler\serializers\XmlSerializer',
-        ]
+        ],
+        'log' => [
+            'flushInterval' => 1,
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'exportInterval' => 1,
+                    'levels' => ['info', 'trace', 'error'],
+                    'logFile' => '@common/crawler/logs/CrawlerLog.log',
+                    'logVars' => []
+                ],
+            ],
+        ],
     ],
 ];

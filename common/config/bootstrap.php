@@ -9,7 +9,12 @@ Yii::$container->set(\common\crawler\interfaces\SerializerInterface::class,
 Yii::$container->set('requestCrawler', [
     'class' => \common\crawler\components\RequestCrawler::class,
     'path' => '/file',
-    'on morfAndUpload' => function ($event) {
-        Yii::info("Data was morfed and saved to: ".$event->sender->path);
+    'on encodeAndUpload' => function ($event, $message = "Data was encoded and saved to: ") {
+        Yii::info($message.$event->sender->getPath(), 'info');
+
+        Yii::$app->session->setFlash(
+            'success',
+            $message.$event->sender->getPath()
+        );
     },
 ]);

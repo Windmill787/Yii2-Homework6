@@ -48,7 +48,7 @@ class RegistrationForm extends Model
                 'message' => Yii::t('app', 'This Email is already used')],
             ['email', 'email'],
 
-            ['img', 'file'],
+            ['img', 'default', 'value' => 1]
 
             /*
             ['status', 'default', 'value' => SiteUser::STATUS_ACTIVE, 'on' => 'default'],
@@ -92,12 +92,9 @@ class RegistrationForm extends Model
         $user->last_name = $this->last_name;
         $user->age = $this->age;
         $user->email = $this->email;
+        $user->img = $this->img;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-
-        $auth = Yii::$app->authManager;
-        $authorRole = $auth->getRole('author');
-        $auth->assign($authorRole, $user->getId());
 
         return $user->save() ? $user : null;
     }

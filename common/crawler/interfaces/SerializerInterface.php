@@ -14,5 +14,5 @@ interface SerializerInterface
     * @param $data
     * @return string
     */
-    public function morf($data);
+    public function encode($data);
 }

@@ -16,7 +16,7 @@ class XmlSerializer implements SerializerInterface
     /**
      * @inheritdoc
      */
-    public function morf($data)
+    public function encode($data)
     {
         $xml = new SimpleXMLElement('<main/>');
         array_walk_recursive($data, array($xml, 'addChild'));

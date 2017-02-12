@@ -9,6 +9,7 @@ use frontend\assets\GreyAsset;
 use yii\widgets\Menu;
 use edgardmessias\assets\nprogress\NProgressAsset;
 use common\widgets\MultiLang\MultiLang;
+use \common\widgets\Alert;
 
 $this->registerCssFile('@web/themes/grey/css/input.css');
 NProgressAsset::register($this);
@@ -115,7 +116,8 @@ GreyAsset::register($this);
     <div id="container">
         <div id='wsite-content' class='wsite-not-footer'>
 
-        <?= Yii::t('app', $content); ?>
+            <?= Alert::widget() ?>
+            <?= Yii::t('app', $content); ?>
         </div>
 
         <div class="clear"></div>

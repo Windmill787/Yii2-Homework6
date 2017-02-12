@@ -9,8 +9,8 @@
 namespace common\crawler\components;
 
 use common\crawler\interfaces\SerializerInterface;
+use common\crawler\services\InputEvent;
 use yii\base\Component;
-use Yii;
 use yii\base\Event;
 
 class RequestCrawler extends Component
@@ -18,7 +18,7 @@ class RequestCrawler extends Component
     public $path;
     public $serializerType;
 
-    const EVENT_MORF_AND_UPLOAD = 'morfAndUpload';
+    const EVENT_ENCODE_AND_UPLOAD = 'encodeAndUpload';
 
     public function __construct(SerializerInterface $serializerType, $config = [])
     {
@@ -31,14 +31,16 @@ class RequestCrawler extends Component
         return __DIR__.$this->path;
     }
 
-    public function morfAndUpload($data)
+    public function encodeAndUpload($data)
     {
         $array = preg_split('/[, ]/', $data);
-        $morfedData = Yii::$app->get('requestCrawler')->serializerType->morf($array);
+        $encodedData = $this->serializerType->encode($array);
 
-        $this->trigger(self::EVENT_MORF_AND_UPLOAD);
+        $event = new InputEvent(['data' => $data]);
 
-        return file_put_contents($this->getPath(), $morfedData);
+        $this->trigger(self::EVENT_ENCODE_AND_UPLOAD, $event);
+
+        return file_put_contents($this->getPath(), $encodedData);
     }
 
     public function init()

@@ -99,18 +99,6 @@ return [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
         ],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                    'logFile' => '@app/runtime/logs/eauth.log',
-                    'categories' => ['nodge\eauth\*'],
-                    'logVars' => []
-                ],
-            ],
-        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -121,7 +109,6 @@ return [
                 'baseUrl' => '@web/themes/grey',
             ],
         ],
-
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

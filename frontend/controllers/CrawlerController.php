@@ -22,11 +22,14 @@ class CrawlerController extends Controller
         $model = new CrawlerForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            //Yii::$container->get('requestCrawler')->morfAndUpload($model->field);
-            Yii::$app->get('requestCrawler')->morfAndUpload($model->field);
-            return $this->render('index', ['model' => $model]);
+            Yii::$container->get('requestCrawler')->encodeAndUpload($model->field);
+            return $this->render('index', [
+                'model' => $model
+            ]);
         } else {
-            return $this->render('index', ['model' => $model]);
+            return $this->render('index', [
+                'model' => $model
+            ]);
         }
     }
 }

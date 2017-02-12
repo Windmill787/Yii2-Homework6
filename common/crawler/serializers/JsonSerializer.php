@@ -15,7 +15,7 @@ class JsonSerializer implements SerializerInterface
     /**
      * @inheritdoc
      */
-    public function morf($data)
+    public function encode($data)
     {
         return json_encode($data);
     }

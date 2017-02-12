@@ -1,0 +1,89 @@
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with nodge\eauth\Bootstrap::bootstrap()
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][common\widgets\MultiLang\components\UrlManager::processLocaleUrl] Language code found in URL. Setting application language to 'ru'.
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:283
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:159
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][info][yii\web\Session::open] Session started
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:285
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:159
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][common\widgets\MultiLang\components\UrlManager::processLocaleUrl] Persisting language 'ru' in session.
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:286
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:159
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][common\widgets\MultiLang\components\UrlManager::processLocaleUrl] Persisting language 'ru' in cookie.
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:298
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:159
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][yii\web\UrlManager::parseRequest] No matching URL rules. Using default URL parsing logic.
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:162
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][yii\web\Application::handleRequest] Route requested: 'crawler/index'
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][yii\base\Controller::runAction] Route to run: crawler/index
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][yii\base\InlineAction::runWithParams] Running action: frontend\controllers\CrawlerController::actionIndex()
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][info][info] Data was encoded and saved to: /var/www/mysite/homeAdvanced/common/crawler/components/file
+    in /var/www/mysite/homeAdvanced/common/config/bootstrap.php:13
+    in /var/www/mysite/homeAdvanced/common/crawler/components/RequestCrawler.php:41
+    in /var/www/mysite/homeAdvanced/frontend/controllers/CrawlerController.php:25
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][yii\base\View::renderFile] Rendering view file: /var/www/mysite/homeAdvanced/frontend/views/crawler/index.php
+    in /var/www/mysite/homeAdvanced/frontend/controllers/CrawlerController.php:28
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][yii\base\View::renderFile] Rendering view file: /var/www/mysite/homeAdvanced/frontend/views/layouts/main.php
+    in /var/www/mysite/homeAdvanced/frontend/controllers/CrawlerController.php:28
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][info][yii\db\Command::query] SELECT * FROM `SiteUser` WHERE (`id`=1) AND (`status`=10)
+    in /var/www/mysite/homeAdvanced/frontend/models/SiteUser.php:160
+    in /var/www/mysite/homeAdvanced/frontend/views/layouts/main.php:67
+    in /var/www/mysite/homeAdvanced/frontend/controllers/CrawlerController.php:28
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][info][yii\db\Connection::open] Opening DB connection: mysql:host=localhost;dbname=advanced
+    in /var/www/mysite/homeAdvanced/frontend/models/SiteUser.php:160
+    in /var/www/mysite/homeAdvanced/frontend/views/layouts/main.php:67
+    in /var/www/mysite/homeAdvanced/frontend/controllers/CrawlerController.php:28
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][info][yii\db\Command::query] SHOW FULL COLUMNS FROM `SiteUser`
+    in /var/www/mysite/homeAdvanced/frontend/models/SiteUser.php:160
+    in /var/www/mysite/homeAdvanced/frontend/views/layouts/main.php:67
+    in /var/www/mysite/homeAdvanced/frontend/controllers/CrawlerController.php:28
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][info][yii\db\Command::query] SELECT
+    kcu.constraint_name,
+    kcu.column_name,
+    kcu.referenced_table_name,
+    kcu.referenced_column_name
+FROM information_schema.referential_constraints AS rc
+JOIN information_schema.key_column_usage AS kcu ON
+    (
+        kcu.constraint_catalog = rc.constraint_catalog OR
+        (kcu.constraint_catalog IS NULL AND rc.constraint_catalog IS NULL)
+    ) AND
+    kcu.constraint_schema = rc.constraint_schema AND
+    kcu.constraint_name = rc.constraint_name
+WHERE rc.constraint_schema = database() AND kcu.table_schema = database()
+AND rc.table_name = 'SiteUser' AND kcu.table_name = 'SiteUser'
+    in /var/www/mysite/homeAdvanced/frontend/models/SiteUser.php:160
+    in /var/www/mysite/homeAdvanced/frontend/views/layouts/main.php:67
+    in /var/www/mysite/homeAdvanced/frontend/controllers/CrawlerController.php:28
+2017-02-12 17:39:16 [127.0.0.1][1][ou8r86fvujb3rjrq3f7qemrsf4][trace][yii\base\View::renderFile] Rendering view file: /var/www/mysite/homeAdvanced/common/widgets/MultiLang/views/view.php
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/MultiLang.php:22
+    in /var/www/mysite/homeAdvanced/frontend/views/layouts/main.php:108
+    in /var/www/mysite/homeAdvanced/frontend/controllers/CrawlerController.php:28
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with nodge\eauth\Bootstrap::bootstrap()
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2017-02-12 17:39:16 [127.0.0.1][-][-][trace][common\widgets\MultiLang\components\UrlManager::processLocaleUrl] Language code found in URL. Setting application language to 'ru'.
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:283
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:159
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][info][yii\web\Session::open] Session started
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:285
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:159
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][common\widgets\MultiLang\components\UrlManager::processLocaleUrl] Persisting language 'ru' in session.
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:286
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:159
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][common\widgets\MultiLang\components\UrlManager::processLocaleUrl] Persisting language 'ru' in cookie.
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:298
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:159
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][yii\web\UrlRule::parseRequest] Request parsed with URL rule: debug/<controller:[\w\-]+>/<action:[\w\-]+>
+    in /var/www/mysite/homeAdvanced/common/widgets/MultiLang/components/UrlManager.php:162
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][yii\web\Application::handleRequest] Route requested: 'debug/default/toolbar'
+2017-02-12 17:39:16 [127.0.0.1][-][ou8r86fvujb3rjrq3f7qemrsf4][trace][yii\base\Controller::runAction] Route to run: debug/default/toolbar

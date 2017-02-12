@@ -42,7 +42,7 @@ class SiteController extends Controller
                 'only' => ['logout', 'gallery', 'contact'],
                 'rules' => [
                     [
-                        'actions' => ['registration', 'error'],
+                        'actions' => ['registration', 'error', 'login', 'logout'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],

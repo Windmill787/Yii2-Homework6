@@ -31,7 +31,7 @@ class CrawlerForm extends Model
     public function attributeLabels()
     {
         return [
-            'field' => Yii::t('app', 'Field'),
+            'field' => Yii::t('app', 'Field')
         ];
     }
 }
