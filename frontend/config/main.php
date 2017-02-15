@@ -12,17 +12,13 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'controllerMap' => [
-        'comments' => 'yii2mod\comments\controllers\ManageController',
-        /* Also you can override some controller properties in following way:
         'comments' => [
             'class' => 'yii2mod\comments\controllers\ManageController',
             'searchClass' => [
                 'class' => 'yii2mod\comments\models\search\CommentSearch',
                 'pageSize' => 25
-            ],
-            'indexView' => 'custom path to index view file',
-            'updateView' => 'custom path to update view file',
-        ], */
+            ]
+        ],
     ],
     'modules' => [
         'comment' => [
@@ -89,6 +85,9 @@ return [
         ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'user' => [
             'identityClass' => 'frontend\models\SiteUser',
@@ -116,6 +115,7 @@ return [
             'languages' => ['ru', 'en'],
             'enableDefaultLanguageUrlCode' => true,
             'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'user']
             ],
         ],
         'i18n' => [

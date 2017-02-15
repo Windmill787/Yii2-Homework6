@@ -23,6 +23,6 @@ class AuthorRule extends Rule
      */
     public function execute($user, $item, $params)
     {
-        return isset($params['commentary']) ? $params['commentary']->createdBy == $user : false;
+        return isset($params['user']) ? $params['user']->createdBy == $user : false;
     }
 }

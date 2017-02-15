@@ -14,6 +14,9 @@ use yii\web\IdentityInterface;
 use yii\behaviors\TimestampBehavior;
 use nodge\eauth\ErrorException;
 use yii\base\NotSupportedException;
+use yii\web\Linkable;
+use yii\web\Link;
+use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 /**
@@ -34,7 +37,7 @@ use yii\web\UploadedFile;
  * @property integer $updated_at
  * @property string $password write-only password
  */
-class SiteUser extends ActiveRecord implements IdentityInterface
+class SiteUser extends ActiveRecord implements IdentityInterface, Linkable
 {
     const STATUS_DELETED = 0;
     const STATUS_NOT_ACTIVE = 1;
@@ -75,6 +78,46 @@ class SiteUser extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function fields()
+    {
+        $fields = parent::fields();
+
+        unset($fields['auth_key'], $fields['password_hash'], $fields['password_reset_token']);
+
+        return [
+            'id',
+            'login' => 'username',
+            'name' => function () {
+                return $this->first_name . ' ' . $this->last_name;
+            },
+            'age',
+            'email'
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function extraFields()
+    {
+        return [
+            'status'
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getLinks()
+    {
+        return [
+            Link::REL_SELF => Url::to(['user/view', 'id' => $this->id], true),
         ];
     }
 

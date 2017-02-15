@@ -96,6 +96,10 @@ class RegistrationForm extends Model
         $user->setPassword($this->password);
         $user->generateAuthKey();
 
+        $auth = Yii::$app->authManager;
+        $authorRole = $auth->getRole('author');
+        $auth->assign($authorRole, $user->getId());
+
         return $user->save() ? $user : null;
     }
 }
