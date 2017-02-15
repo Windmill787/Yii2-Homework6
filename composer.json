@@ -17,7 +17,16 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.6",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0"
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yiisoft/yii2-jui": "^2.0",
+        "edgardmessias/yii2-nprogress": "*",
+        "lib-curl": "*",
+        "iignatov/lightopenid": "*",
+        "lusitanian/oauth": "~0.3",
+        "nodge/lightopenid": "~1.1.0",
+        "nodge/yii2-eauth": "~2.0",
+        "2amigos/yii2-ckeditor-widget" : "2.0",
+        "yii2mod/yii2-comments": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

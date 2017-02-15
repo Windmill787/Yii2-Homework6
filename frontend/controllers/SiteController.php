@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\models\RegistrationForm;
+use frontend\models\SiteUser;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -10,8 +12,11 @@ use yii\filters\AccessControl;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use Exception;
+use nodge\eauth\openid\ControllerBehavior;
+use nodge\eauth\ErrorException;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -24,17 +29,25 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
+            'eauth' => [
+                // required to disable csrf validation on OpenID requests
+                'class' => ControllerBehavior::className(),
+                'only' => ['login'],
+            ],
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'denyCallback' => function ($rule, $action) {
+                    throw new Exception(Yii::t('app', 'You don\'t have permission for this page'));
+                },
+                'only' => ['logout', 'gallery', 'contact'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['registration', 'error', 'login', 'logout'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'gallery', 'contact'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -82,6 +95,41 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $serviceName = Yii::$app->getRequest()->getQueryParam('service');
+        if (isset($serviceName)) {
+
+            /**
+             * @var $eauth \nodge\eauth\ServiceBase
+             */
+
+            $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
+            $eauth->setRedirectUrl(Yii::$app->getUser()->getReturnUrl());
+            $eauth->setCancelUrl(Yii::$app->getUrlManager()->createAbsoluteUrl('site/login'));
+
+            try {
+                if ($eauth->authenticate()) {
+
+                    $identity = SiteUser::findByEAuth($eauth);
+                    Yii::$app->getUser()->login($identity);
+
+                    // special redirect with closing popup window
+                    $eauth->redirect();
+                }
+                else {
+                    // close popup window and redirect to cancelUrl
+                    $eauth->cancel();
+                }
+            }
+            catch (ErrorException $e) {
+                // save error to show it later
+                Yii::$app->getSession()->setFlash('error', 'EAuthException: '.$e->getMessage());
+
+                // close popup window and redirect to cancelUrl
+//              $eauth->cancel();
+                $eauth->redirect($eauth->getCancelUrl());
+            }
+        }
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -142,27 +190,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Signs user up.
-     *
-     * @return mixed
-     */
-    public function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
-            }
-        }
-
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
      * Requests password reset.
      *
      * @return mixed
@@ -209,5 +236,33 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function actionRegistration()
+    {
+        $model = new RegistrationForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->validate()):
+            if ($user = $model->registration()):
+                if ($user->status === SiteUser::STATUS_ACTIVE):
+                    if (Yii::$app->getUser()->login($user)):
+                        return $this->goHome();
+                    endif;
+                endif;
+            else:
+                Yii::$app->session->setFlash('error', Yii::t('app', 'There is error while registration'));
+                Yii::error(Yii::t('app', 'Error while registration'));
+                return $this->refresh();
+            endif;
+        endif;
+
+        return $this->render('registration', [
+                'model' => $model
+            ]);
+    }
+
+    public function actionGallery()
+    {
+        return $this->render('gallery');
     }
 }
